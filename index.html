@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRINGEROT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Creepster', cursive;
+            background: linear-gradient(135deg, #3a0068, #8a2be2, #4b0082);
+            color: #fff;
+            overflow-x: hidden;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 20px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            text-align: center;
+            margin: 0 50px;
+            position: relative;
+        }
+
+        .logo h1 {
+            font-size: 4em;
+            margin: 10px 0;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+        }
+
+        .logo p {
+            font-size: 1.5em;
+            margin: 0;
+            color: #ff69b4;
+        }
+
+        .logo-image {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 50%;
+            border: 5px solid #ff00ff;
+            overflow: hidden;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+  .candle {
+    position: relative;
+    width: 60px;
+    height: 120px;
+    background: transparent;
+}
+
+.candle-flame {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 20px;
+    height: 40px;
+    background: #ff9900;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 20px #ff6600, 0 0 40px #ff3300;
+    animation: flicker 1s infinite alternate;
+    z-index: 2;
+}
+
+.candle-wax {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 40px;
+    height: 80px;
+    background: #000;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); }
+    100% { transform: translateX(-50%) scale(1.05) rotate(1deg); }
+}
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        #scream-button {
+            background: #ff00ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Creepster', cursive;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px 0;
+        }
+
+        #scream-button:hover {
+            background: #ff0000;
+            transform: scale(1.1);
+        }
+
+        #scream-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .achievements {
+            margin: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+        }
+
+        .achievements-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .achievement-item {
+            width: 300px;
+            overflow: hidden;
+            border: 3px solid #ff00ff;
+            border-radius: 10px;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .achievement-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .achievement-text {
+            padding: 15px;
+            font-size: 1.2em;
+        }
+
+        .achievement-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .achievement-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .team {
+            margin: 60px 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+        }
+
+        .team-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            width: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #ff00ff;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .team-member-text {
+            padding: 15px;
+            font-size: 1.2em;
+        }
+
+        .team-member:hover {
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 0 30px #ff00ff;
+        }
+
+        /* Кнопка "Купить" */
+        .buy {
+            margin: 40px;
+        }
+
+        #buy-button {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-family: 'Creepster', cursive;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        #buy-button:hover {
+            background: #ff0000;
+            transform: scale(1.1);
+        }
+
+        .disclaimer {
+            font-size: 0.8em;
+            color: #ff0000;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .falling-eyes::before {
+            content: "👁️";
+            position: absolute;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .glitch {
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
+            25% { text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff; }
+            50% { text-shadow: 2px 0 #ff0000, -2px 0 #0000ff; }
+            75% { text-shadow: -2px 0 #ff0000, 2px 0 #0000ff; }
+            100% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="candle">
+                <div class="candle-flame"></div>
+                <div class="candle-wax"></div>
+            </div>
+            
+            <div class="logo">
+                <h1>CRINGEROT</h1>
+                <p>Монета, способная сожрать саму суть твоего разума</p>
+            </div>
+            
+            <div class="candle">
+                <div class="candle-flame"></div>
+                <div class="candle-wax"></div>
+            </div>
+        </div>
+
+        <div class="logo-image">
+            <img src="748343.png" alt="CRINGE ROT Logo">
+        </div>
+    </header>
+
+    <main>
+        <section class="madness">
+            <h2><span class="glitch">ТОКЕН СВЯЩЕННОГО БЕЗУМИЯ</span></h2>
+            <p>Прими гниение, как плоть принимает тлен. Позволь <span class="glitch">БЕЗУМИЮ</span> поглотить остатки твоей воли. Это не просто монета. Это — <span class="glitch">КУЛЬТ</span>.</p>
+            <button id="scream-button">КРИК В БЕЗДНУ</button>
+            <div id="scream-effect"></div>
+        </section>
+
+        <section class="achievements">
+            <h2>НАШИ "ВЕЛИКИЕ" ДОСТИЖЕНИЯ</h2>
+            <div class="achievements-gallery">
+                <div class="achievement-item">
+                    <img src="66.png" alt="Достижение 1">
+                    <div class="achievement-text">
+                        <p>Самый культовый мемкоин</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <img src="67.png" alt="Достижение 2">
+                    <div class="achievement-text">
+                        <p>Самый конченый мемкоин</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <img src="68.png" alt="Достижение 3">
+                    <div class="achievement-text">
+                        <p>Самый уникальный мемкоин</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team">
+            <h2>ВЕРХОВНЫЕ ЖРЕЦЫ ГНИЕНИЯ</h2>
+            <div class="team-gallery">
+                <div class="team-member">
+                    <img src="54.png" alt="Повелитель Гнили">
+                    <div class="team-member-text">
+                        <p>Повелитель Гнили</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="55.png" alt="Мастер Кринжа">
+                    <div class="team-member-text">
+                        <p>ЕБАНУТЫЙ Буратино</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="56.png" alt="Архитектор Безумия">
+                    <div class="team-member-text">
+                        <p>Спортик</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="buy">
+            <h2>ПРИСОЕДИНЯЙСЯ К ГНИЕНИЮ</h2>
+            <a href="https://t.me/cringerott" id="buy-button">СТАТЬ УЧАСНИКОМ ГНИЕНИЯ</a>
+            <p class="disclaimer">Становясь участником, ты отказываешься от рассудка.</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 CRINGEROT</p>
+        <div class="falling-eyes"></div>
+    </footer>
+
+    <script>
+        document.getElementById('scream-button').addEventListener('click', function() {
+            const screamEffect = document.getElementById('scream-effect');
+            screamEffect.style.display = 'block';
+            
+            const screamSound = new Audio('444.mp3');
+            screamSound.play();
+            
+            setTimeout(() => {
+                screamEffect.style.display = 'none';
+            }, 1000);
+        });
+
+        setInterval(() => {
+            const eye = document.createElement('div');
+            eye.innerHTML = '👁️';
+            eye.style.position = 'absolute';
+            eye.style.left = Math.random() * 100 + 'vw';
+            eye.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            eye.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+            
+            document.querySelector('footer').appendChild(eye);
+            
+            setTimeout(() => {
+                eye.remove();
+            }, 5000);
+        }, 500);
+    </script>
+</body>
+</html>
